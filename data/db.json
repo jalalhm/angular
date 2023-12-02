@@ -1,0 +1,40 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "MacOs",
+      "price": 987657,
+      "checked": true
+    },
+    {
+      "id": 2,
+      "name": "DELL",
+      "price": 98765,
+      "checked": false
+    },
+    {
+      "id": 3,
+      "name": "Thinkpad",
+      "price": 23456,
+      "checked": false
+    },
+    {
+      "name": "Asus",
+      "price": "56788",
+      "checked": true,
+      "id": 4
+    },
+    {
+      "name": "hp",
+      "price": "9600",
+      "checked": true,
+      "id": 5
+    },
+    {
+      "name": "lenovo",
+      "price": "9600",
+      "checked": false,
+      "id": 5
+    }
+  ]
+}
