@@ -21,9 +21,11 @@ export class ProductComponent implements OnInit{
   getProduct(){
    this.productService.getProduct(2,2)
       .subscribe({
-          next: data =>
+          next: (resp) =>
           {
-            this.products=data
+            this.products=resp.body as Product[];
+            let totalProducts: number = parseInt(resp.headers.get('x-total-count')!);
+            console.log(totalProducts)
           },
           error : err => {
             console.log(err)
