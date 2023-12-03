@@ -22,9 +22,13 @@ export class ProductService {
     return   this.http.delete<Product>(`http://localhost:8089/products/${product.id}`,);
   }
 
-  saveProduct(product: Product) : Observable<Product> {
+  public saveProduct(product: Product) : Observable<Product> {
     return this.http.post<Product>(`http://localhost:8089/products`,
       product);
+  }
+
+  public searchProduct(keyword : string) : Observable<Array<Product>>{
+    return  this.http.get<Array<Product>>(`http://localhost:8089/products?name_like=${keyword}`);
   }
 }
 

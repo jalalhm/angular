@@ -22,7 +22,7 @@
               </label>
               <input type="checkbox" class="form-check-input" formControlName="checked">
             </div>
-            <button class="btn btn-success" type="submit">Save</button>  <!-- valider -> ngSubmit---->
+            <button [disabled]="productForm.invalid" class="btn btn-success" type="submit">Save</button>  <!-- valider -> ngSubmit---->
           </form>
         </div>
       </div>
