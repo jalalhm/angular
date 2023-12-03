@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import {ProductService} from "../services/product.service";
 
 @Component({
   selector: 'app-product',
@@ -8,28 +9,34 @@ import {HttpClient} from "@angular/common/http";
 })
 export class ProductComponent implements OnInit{
   products : Array<any> = [];
-  constructor(private http : HttpClient) {
+  constructor(private productService:ProductService) {
 
   }
   ngOnInit(): void {
-    this.http.get<Array<any>>("http://localhost:8089/products")
+   this.getProduct();
+  }
+  getProduct(){
+    this.productService.getProduct()
       .subscribe({
           next: data =>
           {
             this.products=data
           },
-        error : err => {
+          error : err => {
             console.log(err)
-        }
+          }
         }
       )
   }
 
-
   handleCheckProduct(product: any) {
-    this.http.patch("http://localhost:8089/products/"+product.id , {checked:!product.checked})
-    product.checked=!product.checked;
-  }
+    this.productService.checkProduct(product).subscribe({
+        next : updateProduct => {
+          product.checked =!product.checked;
+          //le seul produit qon a cheque
+          }
+         })
+        }
 
 
 }

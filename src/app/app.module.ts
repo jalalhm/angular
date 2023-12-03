@@ -7,6 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { ProductComponent } from './product/product.component';
 import { NewProductComponent } from './New-product/new-product.component';
 import {HttpClientModule} from "@angular/common/http";
+import {ProductService} from "./services/product.service";
 
 @NgModule({
   declarations: [

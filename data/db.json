@@ -4,7 +4,7 @@
       "id": 1,
       "name": "MacOs",
       "price": 987657,
-      "checked": true
+      "checked": false
     },
     {
       "id": 2,
@@ -16,7 +16,7 @@
       "id": 3,
       "name": "Thinkpad",
       "price": 23456,
-      "checked": false
+      "checked": true
     },
     {
       "name": "Asus",
@@ -27,7 +27,7 @@
     {
       "name": "hp",
       "price": "9600",
-      "checked": true,
+      "checked": false,
       "id": 5
     },
     {
