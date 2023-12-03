@@ -12,6 +12,9 @@ import {Observable} from "rxjs";
 export class ProductComponent implements OnInit{
   public products : Array<Product>=  [];
   public keyword : string = ""
+  public totalPages : number = 0;
+  public PageSize : number = 3;
+  public CurrentPage : number = 1;
   constructor(private productService:ProductService) {
 
   }
@@ -19,13 +22,19 @@ export class ProductComponent implements OnInit{
    this.getProduct();
   }
   getProduct(){
-   this.productService.getProduct(2,2)
+   this.productService.getProduct(this.CurrentPage,this.PageSize)
       .subscribe({
           next: (resp) =>
           {
             this.products=resp.body as Product[];
             let totalProducts: number = parseInt(resp.headers.get('x-total-count')!);
-            console.log(totalProducts)
+            //console.log(totalProducts)
+            this.totalPages = Math.floor(totalProducts/this.PageSize);
+            //console.log(this.totalPages);
+            if (totalProducts % this.PageSize != 0)
+            {
+              this.totalPages = this.totalPages++;
+            }
           },
           error : err => {
             console.log(err)
