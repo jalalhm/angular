@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {ProductService} from "../services/product.service";
+import {Product} from "../model/product.model";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-product',
@@ -8,7 +10,7 @@ import {ProductService} from "../services/product.service";
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit{
-  products : Array<any> = [];
+  products$! : Observable<Array<Product>>;
   constructor(private productService:ProductService) {
 
   }
@@ -16,7 +18,7 @@ export class ProductComponent implements OnInit{
    this.getProduct();
   }
   getProduct(){
-    this.productService.getProduct()
+  /*  this.productService.getProduct()
       .subscribe({
           next: data =>
           {
@@ -26,10 +28,11 @@ export class ProductComponent implements OnInit{
             console.log(err)
           }
         }
-      )
+      )*/
+    this.products$=this.productService.getProduct();
   }
 
-  handleCheckProduct(product: any) {
+  handleCheckProduct(product: Product) {
     this.productService.checkProduct(product).subscribe({
         next : updateProduct => {
           product.checked =!product.checked;
@@ -39,4 +42,7 @@ export class ProductComponent implements OnInit{
         }
 
 
+  handleDelete(product: Product) {
+
+  }
 }

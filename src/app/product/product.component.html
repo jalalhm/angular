@@ -8,7 +8,7 @@
           </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let product of products">
+        <tr *ngFor="let product of products$ | async">
           <td>{{product.name}}</td>
           <td>{{product.price}}</td>
           <td>
@@ -16,7 +16,11 @@
                 <i [class]="product.checked?'bi bi-check' : 'bi bi-circle'"></i>
             </button>
           </td>
-
+        <td>
+          <button (click)="handleDelete(product)" class="btn btn-outline-danger">
+              <i class="bi bi-trash"></i>
+          </button>
+        </td>
         </tr>
         </tbody>
       </div>
