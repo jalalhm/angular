@@ -11,7 +11,7 @@ export class ProductService {
   constructor(private http:HttpClient) {
   }
   public getProduct() : Observable<Array<Product>>{
-      return  this.http.get<Array<any>>("http://localhost:8089/products");
+      return  this.http.get<Array<Product>>("http://localhost:8089/products");
   }
   public checkProduct(product : Product):Observable<Product>{
     return   this.http.patch<Product>(`http://localhost:8089/products/${product.id}`,
@@ -22,8 +22,9 @@ export class ProductService {
     return   this.http.delete<Product>(`http://localhost:8089/products/${product.id}`,);
   }
 
-  saveProduct(product: any) : Observable<Product> {
-    return   this.http.post<Product>(`http://localhost:8089/products/${product.id}`,
+  saveProduct(product: Product) : Observable<Product> {
+    return this.http.post<Product>(`http://localhost:8089/products`,
       product);
   }
 }
+

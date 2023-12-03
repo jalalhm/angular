@@ -1,6 +1,7 @@
 import { Component , OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormGroup} from "@angular/forms";
 import {ProductService} from "../services/product.service";
+import {Product} from "../model/product.model";
 
 
 
@@ -24,7 +25,13 @@ export class NewProductComponent implements OnInit{
   }
 
   saveProduct() {
-    let product = this.productForm.value;
-    this.productService.saveProduct(product);
+    let product : Product= this.productForm.value;
+    this.productService.saveProduct(product).subscribe({
+      next : data => {
+          alert(JSON.stringify(data));
+      },error : err => {
+        console.log(err)
+      }
+    });
   }
 }

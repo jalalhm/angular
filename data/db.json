@@ -23,6 +23,12 @@
       "price": "9600",
       "checked": false,
       "id": 5
+    },
+    {
+      "name": "macOs",
+      "price": "9986",
+      "checked": "false",
+      "id": 6
     }
   ]
 }
