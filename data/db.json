@@ -1,18 +1,6 @@
 {
   "products": [
     {
-      "id": 1,
-      "name": "MacOs",
-      "price": 987657,
-      "checked": false
-    },
-    {
-      "id": 2,
-      "name": "DELL",
-      "price": 98765,
-      "checked": false
-    },
-    {
       "id": 3,
       "name": "Thinkpad",
       "price": 23456,
@@ -27,7 +15,7 @@
     {
       "name": "hp",
       "price": "9600",
-      "checked": false,
+      "checked": true,
       "id": 5
     },
     {

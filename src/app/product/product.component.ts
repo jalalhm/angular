@@ -10,7 +10,7 @@ import {Observable} from "rxjs";
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit{
-  products$! : Observable<Array<Product>>;
+  products : Array<Product>=  [];
   constructor(private productService:ProductService) {
 
   }
@@ -18,7 +18,7 @@ export class ProductComponent implements OnInit{
    this.getProduct();
   }
   getProduct(){
-  /*  this.productService.getProduct()
+   this.productService.getProduct()
       .subscribe({
           next: data =>
           {
@@ -28,8 +28,8 @@ export class ProductComponent implements OnInit{
             console.log(err)
           }
         }
-      )*/
-    this.products$=this.productService.getProduct();
+      )
+   // this.products=this.productService.getProduct();
   }
 
   handleCheckProduct(product: Product) {
@@ -43,6 +43,13 @@ export class ProductComponent implements OnInit{
 
 
   handleDelete(product: Product) {
-
+    if (confirm("Ete vous sure pour supprimer"))
+    this.productService.deleteProduct(product).subscribe({
+      next : value=>{
+        //this.getProduct();
+        this.products.filter(p=>p.id!=product.id);
+    }
+    })
   }
 }
+

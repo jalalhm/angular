@@ -18,8 +18,12 @@ export class ProductService {
       {checked:!product.checked});
   }
 
-  public deleteProduct(product : Product):Observable<Product>{
-    return   this.http.patch<Product>(`http://localhost:8089/products/${product.id}`,
-      {checked:!product.checked});
+  public deleteProduct(product : Product){
+    return   this.http.delete<Product>(`http://localhost:8089/products/${product.id}`,);
+  }
+
+  saveProduct(product: any) : Observable<Product> {
+    return   this.http.post<Product>(`http://localhost:8089/products/${product.id}`,
+      product);
   }
 }
