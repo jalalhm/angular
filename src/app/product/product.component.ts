@@ -1,8 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
 import {ProductService} from "../services/product.service";
 import {Product} from "../model/product.model";
-import {Observable} from "rxjs";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-product',
@@ -10,30 +9,28 @@ import {Observable} from "rxjs";
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit{
-  public products : Array<Product>=  [];
-  public keyword : string = ""
-  public totalPages : number = 0;
-  public PageSize : number = 3;
-  public CurrentPage : number = 1;
+  products! : Array<Product>;
+  keyword: any = '';
+  totalPages: number=0;
+  PageSize: number=3;
+  currentPage: number=1;
   constructor(private productService:ProductService) {
 
   }
   ngOnInit(): void {
-   this.getProduct();
+   this.searchProduct();
   }
   getProduct(){
-   this.productService.getProduct(this.CurrentPage,this.PageSize)
+   this.productService.getProduct(this.currentPage,this.PageSize)
       .subscribe({
           next: (resp) =>
           {
             this.products=resp.body as Product[];
             let totalProducts: number = parseInt(resp.headers.get('x-total-count')!);
-            //console.log(totalProducts)
             this.totalPages = Math.floor(totalProducts/this.PageSize);
-            //console.log(this.totalPages);
             if (totalProducts % this.PageSize != 0)
             {
-              this.totalPages = this.totalPages++;
+              this.totalPages = this.totalPages+1;
             }
           },
           error : err => {
@@ -41,7 +38,6 @@ export class ProductComponent implements OnInit{
           }
         }
       )
-   // this.products=this.productService.getProduct();
   }
 
   handleCheckProduct(product: Product) {
@@ -55,13 +51,13 @@ export class ProductComponent implements OnInit{
 
 
   handleDelete(product: Product) {
-    if (confirm("Ete vous sure pour supprimer"))
-    this.productService.deleteProduct(product).subscribe({
-      next : value=>{
-        //this.getProduct();
-        this.products.filter(p=>p.id!=product.id);
+    if (confirm("Êtes-vous sûr de vouloir supprimer?")) {
+      this.productService.deleteProduct(product).subscribe({
+        next: value => {
+          this.products = this.products.filter(p => p.id != product.id);
+        }
+      });
     }
-    })
   }
 
   searchProduct() {
@@ -69,7 +65,12 @@ export class ProductComponent implements OnInit{
       next : value => {
         this.products=value;
       }
-    })
+    });
+  }
+
+  handleGoToPage(page : number){
+      this.currentPage=page;
+      this.getProduct();
   }
 }
 
