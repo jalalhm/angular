@@ -10,9 +10,10 @@ export class ProductService {
 
   constructor(private http:HttpClient) {
   }
-  public getProduct(page : number = 1 ,  size : number = 4) {
-      return  this.http.get(`http://localhost:8089/products?_page=${page}&_limit=${size}`,{observe:'response'});
+  public getProduct(Page : number = 1 ,  size : number = 4) {
+      return  this.http.get(`http://localhost:8089/products?_page=${Page}&_limit=${size}`,{observe:'response'});
   }//http_response
+
   public checkProduct(product : Product):Observable<Product>{
     return   this.http.patch<Product>(`http://localhost:8089/products/${product.id}`,
       {checked:!product.checked});

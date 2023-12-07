@@ -11,7 +11,7 @@ import {Router} from "@angular/router";
 export class ProductComponent implements OnInit{
   products! : Array<Product>;
   keyword: any = '';
-  totalPages: number=0;
+  totalPages: number=3;
   PageSize: number=3;
   currentPage: number=1;
   constructor(private productService:ProductService) {
