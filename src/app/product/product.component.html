@@ -33,10 +33,10 @@
       </table>
       <ul class="nav nav-pills">
         <li *ngFor="let page of [].constructor(totalPages); let i = index">
-          <button class="btn btn-outline-success m-1"
-                  [ngClass]="currentPage == i+1 ? 'active' : ''"
-                  (click)="handleGoToPage(i+1)">
-            {{i+1}}
+          <button (click)="handleGoToPage(i+1)"
+           [class.btn-success]="currentPage==(i+1)" class="btn m-1 btn"
+          >
+            {{(i+1)}}
           </button>
         </li>
       </ul>

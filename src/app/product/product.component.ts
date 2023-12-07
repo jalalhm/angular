@@ -12,8 +12,8 @@ export class ProductComponent implements OnInit{
   products! : Array<Product>;
   keyword: any = '';
   totalPages: number=3;
-  PageSize: number=3;
-  currentPage: number=1;
+  PageSize: number=2;
+  currentPage: number=2;
   constructor(private productService:ProductService) {
 
   }
