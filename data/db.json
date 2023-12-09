@@ -9,7 +9,7 @@
     {
       "name": "Asus",
       "price": "56788",
-      "checked": false,
+      "checked": true,
       "id": 4
     },
     {
@@ -27,6 +27,12 @@
     {
       "name": "macOs",
       "price": "9986",
+      "checked": false,
+      "id": 6
+    },
+    {
+      "name": "Ipad",
+      "price": "8773",
       "checked": false,
       "id": 6
     }

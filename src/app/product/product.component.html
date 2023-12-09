@@ -3,8 +3,8 @@
     <div class="card-body">
       <div class="card-body">
           {{keyword}}
-          <input type="text" [(ngModel)]="keyword">
-        <button (click)="searchProduct()" class="btn btn-outline-success ms-1">Search
+          <input class="p-1" type="text" [(ngModel)]="keyword">
+        <button (click)="getProduct()" class="btn btn-outline-success ms-1">Search
         <i class="bi bi-search"></i>
         </button>
       </div>
@@ -34,7 +34,7 @@
       <ul class="nav nav-pills">
         <li *ngFor="let page of [].constructor(totalPages); let i = index">
           <button (click)="handleGoToPage(i+1)"
-           [class.btn-success]="currentPage==(i+1)" class="btn m-1 btn"
+           [class.btn-success]="currentPage==(i+1)" class="btn m-1 btn-success"
           >
             {{(i+1)}}
           </button>

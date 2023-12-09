@@ -21,7 +21,7 @@ export class ProductComponent implements OnInit{
    this.searchProduct();
   }
   getProduct(){
-   this.productService.getProduct(this.currentPage,this.PageSize)
+   this.productService.getProduct(this.keyword,this.currentPage,this.PageSize)
       .subscribe({
           next: (resp) =>
           {
@@ -60,13 +60,15 @@ export class ProductComponent implements OnInit{
     }
   }
 
-  searchProduct() {
-    this.productService.searchProduct(this.keyword).subscribe({
+ /* searchProduct() {
+    this.currentPage=1;
+    this.totalPages = 3;
+    this.productService.searchProduct(this.keyword , this.PageSize , this.currentPage).subscribe({
       next : value => {
         this.products=value;
       }
     });
-  }
+  }*/
 
   handleGoToPage(page : number){
       this.currentPage=page;

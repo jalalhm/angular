@@ -10,8 +10,8 @@ export class ProductService {
 
   constructor(private http:HttpClient) {
   }
-  public getProduct(Page : number = 1 ,  size : number = 4) {
-      return  this.http.get(`http://localhost:8089/products?_page=${Page}&_limit=${size}`,{observe:'response'});
+  public getProduct(Keyword : string= "" , Page : number = 1 ,  size : number = 4) {
+      return  this.http.get(`http://localhost:8089/products?name_like=${Keyword}_page=${Page}&_limit=${size}`,{observe:'response'});
   }//http_response
 
   public checkProduct(product : Product):Observable<Product>{
@@ -28,8 +28,8 @@ export class ProductService {
       product);
   }
 
-  public searchProduct(keyword : string) : Observable<Array<Product>>{
-    return  this.http.get<Array<Product>>(`http://localhost:8089/products?name_like=${keyword}`);
-  }
+/*  public searchProduct(keyword : string , page : number, size : number) : Observable<Array<Product>>{
+    return  this.http.get<Array<Product>>(`http://localhost:8089/products?name_like=${keyword} &_page=${page}&_limit=${size}`);
+  }*/
 }
 
