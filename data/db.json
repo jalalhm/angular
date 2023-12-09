@@ -35,6 +35,12 @@
       "price": "8773",
       "checked": false,
       "id": 6
+    },
+    {
+      "name": "QA",
+      "price": "7",
+      "checked": "false",
+      "id": 7
     }
   ]
 }
