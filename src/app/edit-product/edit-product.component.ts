@@ -22,7 +22,7 @@ export class EditProductComponent implements OnInit{
           this.productFormGroup=this.formBuilder.group({
             id : this.formBuilder.control(product.id),
             name : this.formBuilder.control(product.name,[Validators.required]),
-            price : this.formBuilder.control(product.price.[Validators.min(100)]),
+            price : this.formBuilder.control(product.price,[Validators.min(100)]),
             checked : this.formBuilder.control(product.checked)
           })
       },
@@ -31,5 +31,9 @@ export class EditProductComponent implements OnInit{
         console.log(err);
       }
     });
+  }
+
+  updateProduct() {
+
   }
 }
