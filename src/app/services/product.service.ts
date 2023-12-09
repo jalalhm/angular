@@ -32,5 +32,9 @@ export class ProductService {
 /*  public searchProduct(keyword : string , page : number, size : number) : Observable<Array<Product>>{
     return  this.http.get<Array<Product>>(`http://localhost:8089/products?name_like=${keyword} &_page=${page}&_limit=${size}`);
   }*/
+
+  public getProductById(productId: number): Observable<Product> {
+    return this.http.get<Product>(`http://localhost:8089/products/${productId}`);
+  }
 }
 

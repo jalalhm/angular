@@ -15,7 +15,7 @@ export class ProductComponent implements OnInit {
   PageSize: number = 2;
   currentPage: number = 1; // Corrected the initial page to 1
 
-  constructor(private productService: ProductService) {}
+  constructor(private productService: ProductService, private router : Router) {}
 
   ngOnInit() {
     this.searchProduct();
@@ -60,5 +60,9 @@ export class ProductComponent implements OnInit {
   handleGoToPage(page: number) {
     this.currentPage = page;
     this.searchProduct();
+  }
+
+  handleEdit(product: Product) {
+    this.router.navigateByUrl(`editproduct/${product.id}`)
   }
 }
